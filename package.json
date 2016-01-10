@@ -1,6 +1,6 @@
 {
-  "name": "clipboard-app",
-  "description": "Clipboard's history application.",
+  "name": "clipbot",
+  "description": "Clipboard History Manager.",
   "version": "0.1.0",
   "main": "main.js",
   "devDependencies": {
