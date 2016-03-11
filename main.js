@@ -17,6 +17,7 @@ var clipboardLastText = '';
 var appIcon = null;
 var canQuit = false;
 
+require('electron-reload')(__dirname);
 electron.crashReporter.start();
 
 var mainWindow = null;
