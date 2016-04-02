@@ -1,6 +1,7 @@
-const ipcRenderer = require('electron').ipcRenderer;
+import { ipcRenderer } from 'electron';
+import styles from './app.less';
 
-const $list = document.querySelector('#list');
+const $list = document.getElementById('list');
 
 ipcRenderer.on('clipboard.list.updated', function(event, list) {
   console.log(list);
@@ -10,7 +11,7 @@ ipcRenderer.on('clipboard.list.updated', function(event, list) {
 
 function renderList(list, element) {
   var html = list.map(function(item, index) {
-    return '<div>' + item.preview + '</div>';
+    return '<div>' + item.previewText + '</div>';
   });
 
   element.innerHTML = html.join('');
