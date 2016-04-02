@@ -1,3 +1,3 @@
-import Application from './src/main/application';
+import Application from './src/electron/application';
 
 new Application();
