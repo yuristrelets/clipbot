@@ -1,7 +1,7 @@
 var join = require('path').join;
 
 module.exports = {
-  context: join(__dirname, './'),
+  context: join(__dirname, './src'),
   entry: {
     main: [
       './main.js'
