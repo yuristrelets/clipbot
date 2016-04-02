@@ -1,2 +1,2 @@
 # clipbot
-Clipboard History Manager Wireframe
+Clipboard History Manager Sketch
