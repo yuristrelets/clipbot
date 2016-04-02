@@ -9,7 +9,7 @@ class TrayIcon {
   createIcon() {
     const icon = new Tray(`./dist/${iconFile}`);
 
-    icon.setToolTip('My application');
+    icon.setToolTip('ClipBot');
     icon.setContextMenu(this.createMenu());
 
     return icon;
@@ -18,7 +18,7 @@ class TrayIcon {
   createMenu() {
     const template = [
       {
-        label: 'About Klipper...',
+        label: 'About ClipBot...',
         type: 'normal'
       },
       {
