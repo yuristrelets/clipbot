@@ -1,5 +1,5 @@
 import { Tray, Menu } from 'electron';
-import iconFile from '../resources/app.ico';
+import icon from '../resources/app.ico';
 
 class TrayIcon {
   constructor() {
@@ -7,7 +7,7 @@ class TrayIcon {
   }
 
   createIcon() {
-    const icon = new Tray(`./dist/${iconFile}`);
+    const icon = new Tray(`./dist/${icon}`);
 
     icon.setToolTip('ClipBot');
     icon.setContextMenu(this.createMenu());
