@@ -1,5 +1,5 @@
 # clipbot
-Clipboard History Manager with Electron and React (coming soon)
+Clipboard History Manager with Electron and React
 
 # How to run
 - `npm i`
