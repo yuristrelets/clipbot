@@ -1,4 +1,4 @@
-import electron, { app, ipcMain, globalShortcut } from 'electron';
+import { app, ipcMain, globalShortcut } from 'electron';
 
 import MainWindow from './components/windows/main';
 import TrayIcon from './components/tray-icon';
@@ -22,18 +22,18 @@ class Application {
     this.clipboardManager = null;
     this.historyList = null;
 
-    app.on('ready', this.onReady.bind(this));
-    app.on('window-all-closed', this.onWindowAllClosed.bind(this));
-    app.on('will-quit', this.onWillQuit.bind(this));
+    app.on('ready', this.handleAppReady);
+    app.on('window-all-closed', this.handleAppAllWindowClosed);
+    app.on('will-quit', this.handleAppWillQuit);
   }
 
-  onWindowAllClosed() {
+  handleAppAllWindowClosed = () => {
     if ('darwin' !== process.platform) {
       this.app.quit();
     }
-  }
+  };
 
-  onWillQuit() {
+  handleAppWillQuit = () => {
     this.unRegisterShortCut();
 
     if (this.historyList) {
@@ -47,12 +47,12 @@ class Application {
     if (this.trayIcon) {
       this.trayIcon.destroy();
     }
-  }
+  };
 
-  onReady() {
+  handleAppReady = () => {
     this.mainWindow = new MainWindow();
 
-    this.mainWindow.on('close', (event) => {
+    this.mainWindow.on('close', event => {
       if (!this.canQuit) {
         event.preventDefault();
       }
@@ -60,7 +60,7 @@ class Application {
       this.mainWindow.hide();
     });
 
-    this.mainWindow.on('closed', function() {
+    this.mainWindow.on('closed', () => {
       this.mainWindow = null;
     });
 
@@ -76,12 +76,12 @@ class Application {
       this.clipboardManager = new ClipboardManager();
       this.historyList = new HistoryList(this.clipboardManager);
 
-      this.historyList.on('updated', (list) => {
+      this.historyList.on(HistoryList.EVENT_UPDATED, (list) => {
         this.mainWindow.setClipboardList(list);
       });
     });
 
-    this.trayIcon = new TrayIcon();
+    this.trayIcon = new TrayIcon(app.getName(), app.getVersion());
 
     this.trayIcon.onQuitClick(() => {
       this.canQuit = true;
@@ -91,7 +91,7 @@ class Application {
     this.trayIcon.on('click', () => {
       this.mainWindow.show();
     });
-  }
+  };
 
   registerShortCut() {
     const result = globalShortcut.register(GLOBAL_SHORTCUT, () => {

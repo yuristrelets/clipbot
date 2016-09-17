@@ -2,12 +2,15 @@ import EventEmitter from 'events';
 
 class HistoryListItem {
   constructor(text) {
-    this.originalText = text;
-    this.previewText = text.split('\n')[0];
+    this.id = Date.now();
+    this.text = text;
+    this.preview = text.split('\n')[0];
   }
 }
 
 class HistoryList extends EventEmitter {
+  static EVENT_UPDATED = 'updated';
+
   constructor(clipboardManager, maxItems = 50) {
     super();
 
@@ -20,11 +23,11 @@ class HistoryList extends EventEmitter {
   }
 
   addListeners() {
-    this.cm.on('changed', (text) => {
+    this.cm.on(this.cm.EVENT_CHANGED, text => {
       this.list.unshift(new HistoryListItem(text));
       this.list = this.list.slice(0, this.maxItems);
 
-      this.emit('updated', this.list);
+      this.emit(HistoryList.EVENT_UPDATED, this.list);
     });
   }
 

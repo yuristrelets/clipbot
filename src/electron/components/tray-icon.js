@@ -2,14 +2,17 @@ import { Tray, Menu, nativeImage } from 'electron';
 import appIcon from '../resources/app.png';
 
 class TrayIcon {
-  constructor() {
+  constructor(appName, appVersion) {
+    this.appName = appName;
+    this.appVersion = appVersion;
+
     this.icon = this.createIcon();
   }
 
   createIcon() {
     const icon = new Tray(nativeImage.createFromDataURL(appIcon));
 
-    icon.setToolTip('ClipBot');
+    icon.setToolTip(this.appName);
     icon.setContextMenu(this.createMenu());
 
     return icon;
@@ -18,8 +21,9 @@ class TrayIcon {
   createMenu() {
     const template = [
       {
-        label: 'About ClipBot...',
-        type: 'normal'
+        label: `${this.appName} ${this.appVersion}`,
+        type: 'normal',
+        enabled: false
       },
       {
         type: 'separator'
@@ -27,6 +31,7 @@ class TrayIcon {
       {
         label: 'Quit',
         type: 'normal',
+        role: 'quit',
         click: () => {
           this.onQuitClickCallback();
         }
