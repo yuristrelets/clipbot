@@ -1,5 +1,6 @@
 {
   "name": "clipbot",
+  "productName": "Clipbot",
   "description": "Clipboard History Manager",
   "version": "0.1.0",
   "main": "dist/main.js",
