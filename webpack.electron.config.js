@@ -29,9 +29,9 @@ module.exports = {
         loader: 'babel'
       },
       {
-        test: /\.ico$/,
+        test: /\.png$/,
         exclude: /node_modules/,
-        loader: 'file?name=[name].[ext]'
+        loader: 'url'
       }
     ]
   }

@@ -1,5 +1,5 @@
-import { Tray, Menu } from 'electron';
-import icon from '../resources/app.ico';
+import { Tray, Menu, nativeImage } from 'electron';
+import appIcon from '../resources/app.png';
 
 class TrayIcon {
   constructor() {
@@ -7,7 +7,7 @@ class TrayIcon {
   }
 
   createIcon() {
-    const icon = new Tray(`./dist/${icon}`);
+    const icon = new Tray(nativeImage.createFromDataURL(appIcon));
 
     icon.setToolTip('ClipBot');
     icon.setContextMenu(this.createMenu());
