@@ -5,6 +5,19 @@ import TrayIcon from './components/tray-icon';
 import ClipboardManager from './components/clipboard-manager';
 import HistoryList from './components/history-list';
 
+/*import NeDB from 'nedb';
+ const db = new NeDB();
+
+ db.insert([
+ { name: 'john' },
+ { name: 'yuri' },
+ { name: 'styv' },
+ ]);
+
+ db.count({}, (err, count) => console.log('Documents: ' + count));
+
+ db.find({ name: 'john' }, (err, docs) => console.log(docs[0]));*/
+
 const GLOBAL_SHORTCUT = 'ctrl+alt+v';
 
 //require('electron-reload')(rootFolder);
