@@ -31,7 +31,6 @@ class TrayIcon {
       {
         label: 'Quit',
         type: 'normal',
-        role: 'quit',
         click: () => {
           this.onQuitClickCallback();
         }
