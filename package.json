@@ -5,8 +5,8 @@
   "version": "0.1.0",
   "main": "dist/main.js",
   "scripts": {
-    "start": "node_modules/.bin/electron .",
-    "watch": "webpack --watch"
+    "start": "./node_modules/.bin/electron .",
+    "watch": "./node_modules/.bin/webpack --watch"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
