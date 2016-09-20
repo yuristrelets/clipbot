@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "main": "dist/main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "node_modules/.bin/electron .",
     "watch": "webpack --watch"
   },
   "devDependencies": {
@@ -29,7 +29,7 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
-    "electron-prebuilt": "^1.2.6",
+    "electron-prebuilt": "^1.4.0",
     "nedb": "^1.8.0",
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
